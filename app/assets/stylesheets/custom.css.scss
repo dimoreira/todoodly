@@ -1,0 +1,94 @@
+/* VARIABLES */
+$title_font_size: 22px;
+$h_font_size: 18px;
+
+body {
+	font-family: "Helvetica Neue";
+	font-size: 14px;
+	color: #333;
+	background: #ccc;
+}
+
+.wrap {
+	width: 760px;
+	margin: 0 auto;
+	padding: 30px 40px;
+}
+
+.notice {
+	padding: 5px 10px;
+	background: green;
+	p {color: #fff;}
+}
+
+.error {
+	padding: 5px 10px;
+	background: red;
+	p {color: #fff;}
+}
+
+.margin-bottom {margin-bottom: 10px;}
+
+h1 {
+	font-size: $title_font_size;
+	font-weight: bold;
+	margin-bottom: 20px;
+	text-shadow: 0px 1px 0px white;
+}
+
+h3 {
+	font-size: $h_font_size;
+	
+	a {
+		color: #333;
+		text-decoration: none;
+		
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	
+	&.empty {
+		font-size: 16px;
+		color: #666;
+	}
+}
+
+p {
+	color: #666;
+}
+
+.list {
+	border: 1px solid #666;
+	padding: 10px 20px;
+	margin-bottom: 10px;
+	
+	a.action {
+		text-decoration: none;
+		color: purple;
+		
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.new_link {
+	color: olive;
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+form {
+	label {
+		color: #333;
+		
+		input[type='text'] {
+			font-size: 14px;
+			padding: 5px 10px;
+			margin-bottom: 20px;
+		}
+	}
+}

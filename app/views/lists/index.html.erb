@@ -1,0 +1,21 @@
+<h1>Lists</h1>
+
+<% if @lists.empty? %>
+	<h3 class="empty">No lists yet...</h3>
+<% else %>
+	<% @lists.each do |list| %>
+		
+		<div class="list">
+			<h3><%= link_to "#{list.name}", list_url(list) %></h3>
+			<p><%= list.description %></p>
+			<br/>
+			<%= link_to 'Edit', edit_list_path(list), class: 'action' %>
+			<%= link_to 'Delete', list_path(list), method: :delete, class: 'action' %>
+		</div>
+		
+	<% end %>
+<% end %>
+
+<hr/>
+
+<%= link_to 'Add new list', new_list_url, class: 'new_link' %>
