@@ -1,5 +1,4 @@
 <h2><%= @list.name %></h2>
-<p><%= @list.description %></p>
 
 <% if @list.tasks.empty? %>
 <p>No tasks yet...</p>
@@ -18,6 +17,9 @@
 </ul>
 
 <h3>Stuff I've done</h3>
+<% if @list.tasks.completed.empty? %>
+<p>Nothing done yet</p>
+<% else %>
 <ul>
 	<% @list.tasks.completed.each do |task| %>
 		<li>
@@ -27,6 +29,7 @@
 		</li>
 	<% end %>
 </ul>
+<% end %>
 
 
 <% end %>
