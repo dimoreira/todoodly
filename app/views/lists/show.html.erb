@@ -1,42 +1,27 @@
-<h2><%= @list.name %></h2>
+<h1><%= @list.name %></h1>
 
-<% if @list.tasks.empty? %>
-<p>No tasks yet...</p>
+<hr/>
+<br/>
+
+<% if @list.tasks.incomplete.empty? %>
+	<h3 class="no_tasks">No tasks yet...</h3>
 <% else %>
-
-<h3>Stuff to do</h3>
-<ul>
-	<% @list.tasks.incomplete.each do |task| %>
-		<li>
-			<p>
-				<%= task.description %>
-				<%= button_to 'Complete', complete_task_path(@list.id,task.id) %>
-			</p>
-		</li>
-	<% end %>
-</ul>
-
-<h3>Stuff I've done</h3>
-<% if @list.tasks.completed.empty? %>
-<p>Nothing done yet</p>
-<% else %>
-<ul>
-	<% @list.tasks.completed.each do |task| %>
-		<li>
-			<p>
-				<%= task.description %>
-			</p>
-		</li>
-	<% end %>
-</ul>
-<% end %>
-
-
+	<table class="tasks">
+		<% @list.tasks.incomplete.each do |task| %>
+		<tr>
+			<td width="*"><%= task.description %></td>
+			<td><%= button_to 'Complete', complete_task_path(@list.id,task.id) %></td>
+		</tr>
+		<% end %>
+	</table>
 <% end %>
 
 <%= form_for [@list, @list.tasks.new] do |form| %>
 	<p><%= form.text_field :description %> <%= form.submit %></p>
 <% end %>
 
+<br/>
 <hr/>
-<%= link_to 'Back to all lists', lists_path %>
+
+<%= link_to 'Back to all lists', lists_path, class: 'back_link' %>
+<div class="clear"></div>

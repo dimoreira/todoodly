@@ -19,6 +19,7 @@ class TasksController < ApplicationController
 		@task = @list.tasks.find(params[:id])
 		@task.completed = true
 		@task.save
+		flash[:notice] = 'Task completed'
 		redirect_to list_path(@list)
 	end
 end

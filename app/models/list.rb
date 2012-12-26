@@ -3,5 +3,5 @@ class List < ActiveRecord::Base
   
   validates_presence_of :name
   
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
 end

@@ -1,23 +1,51 @@
+/* FONTS */
+@import url(http://fonts.googleapis.com/css?family=Russo+One|Montserrat:400,700);
+
 /* VARIABLES */
 $title_font_size: 22px;
 $h_font_size: 18px;
+$orange_c: #ff6702;
+
+/* MIXINS */
+
+@mixin border-radius ($radius: 5px) {
+	border-radius: $radius;
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+}
+
+@mixin button_to ($bg_color: $orange_c) {
+	font-size: 10px;
+	color: white;
+	background: $bg_color;
+	border: none;
+	cursor: pointer;
+	@include border-radius;
+	
+	&:hover {
+		background: green;
+	}
+}
 
 body {
-	font-family: "Helvetica Neue";
+	font-family: "Montserrat";
+	font-weight: 400;
 	font-size: 14px;
 	color: #333;
-	background: #ccc;
+	background: white;
 }
 
 .wrap {
-	width: 760px;
+	width: 600px;
 	margin: 0 auto;
 	padding: 30px 40px;
+	@include border-radius;
 }
 
 .notice {
 	padding: 5px 10px;
 	background: green;
+	@include border-radius;
 	p {color: #fff;}
 }
 
@@ -31,41 +59,23 @@ body {
 
 h1 {
 	font-size: $title_font_size;
-	font-weight: bold;
+	font-weight: 700;
 	margin-bottom: 20px;
 	text-shadow: 0px 1px 0px white;
+	color: $orange_c;
 }
 
 h3 {
 	font-size: $h_font_size;
-	
-	a {
-		color: #333;
-		text-decoration: none;
-		
-		&:hover {
-			text-decoration: underline;
-		}
-	}
+	color: #666;
 	
 	&.empty {
 		font-size: 16px;
-		color: #666;
+		padding: 10px 20px;
 	}
-}
-
-p {
-	color: #666;
-}
-
-.list {
-	border: 1px solid #666;
-	padding: 10px 20px;
-	margin-bottom: 10px;
 	
-	a.action {
+	a {
 		text-decoration: none;
-		color: purple;
 		
 		&:hover {
 			text-decoration: underline;
@@ -73,15 +83,59 @@ p {
 	}
 }
 
-.new_link {
-	color: olive;
+hr {
+	border: none;
+	border-bottom: 2px solid #999;
+}
+
+.list {
+	padding: 10px 20px;
+	margin-bottom: 10px;
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
+	
+	h3 {
+		a {
+			color: $orange_c;
+		}
+	}
+	
+	p {
+		font-size: 13px;
+		color: #666;
+	}
+	
+	a.action {
+		text-decoration: none;
+		color: $orange_c;
+		
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+h4 {
+	font-size: 16px;
+	color: white;
+	display: block;
+	padding: 5px 10px;
+	background: #999;
+	margin: 10px;
+}
+
+.new_link, .back_link {
+	color: $orange_c;
+	float: right;
 	text-decoration: none;
 	&:hover {
 		text-decoration: underline;
 	}
 }
 
-form {
+.new_list, .new_task, .edit_list {
+	padding: 10px 20px;
+	
 	label {
 		color: #333;
 		
@@ -91,4 +145,24 @@ form {
 			margin-bottom: 20px;
 		}
 	}
+	
+	#task_description {
+		border: 1px solid #999;
+		padding: 5px 10px;
+		@include border-radius;
+	}
+}
+
+.tasks {
+	width: 100%;
+	padding: 10px 20px;
+	border-bottom: 1px solid #999;
+	margin-bottom: 10px;
+	table-layout: fixed;
+}
+
+.no_tasks {
+	font-size: 14px;
+	color: #999;
+	padding: 10px 20px;
 }
