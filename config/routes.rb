@@ -8,4 +8,10 @@ Todoodly::Application.routes.draw do
   
   match 'lists/:list_id/tasks/:id/complete' => 'tasks#complete', as: :complete_task
   
+  namespace :api do
+  	resources :lists do
+  		resources :tasks
+  	end
+  end
+  
 end
