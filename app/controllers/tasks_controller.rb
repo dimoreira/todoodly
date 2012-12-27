@@ -22,4 +22,14 @@ class TasksController < ApplicationController
 		flash[:notice] = 'Task completed'
 		redirect_to list_path(@list)
 	end
+	
+	def sort
+		@list = List.find(params[:list_id])
+		@tasks = @list.tasks.incomplete
+		@tasks.each do |task|
+			task.position = params[:task].index(task.id.to_s) + 1
+			task.save
+		end
+		render :nothing => true
+	end
 end

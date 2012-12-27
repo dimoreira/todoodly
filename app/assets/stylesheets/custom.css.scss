@@ -14,7 +14,7 @@ $orange_c: #ff6702;
 	-moz-border-radius: $radius;
 }
 
-@mixin button_to ($bg_color: $orange_c) {
+@mixin button-to ($bg_color: $orange_c) {
 	font-size: 10px;
 	color: white;
 	background: $bg_color;
@@ -154,11 +154,53 @@ h4 {
 }
 
 .tasks {
-	width: 100%;
+	display: block;
 	padding: 10px 20px;
+	border-top: 1px solid #999;
 	border-bottom: 1px solid #999;
 	margin-bottom: 10px;
-	table-layout: fixed;
+	
+	li {
+		border-top: 1px solid #999;
+		border-bottom: 1px solid #999;
+		padding: 10px 0;
+		&:first-child, &:last-child {border:none;}
+		
+		.handle {
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+			margin-right: 10px;
+			background:  url(handle.png) no-repeat;
+			text-indent: -99999em;
+			cursor: move;
+		}
+		
+		p {
+			display: inline;
+			font-size: 15px;
+		}
+		
+		.button_to {
+			display: inline;
+			margin-left: 10px;
+		}
+		
+		.complete_button {
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+			vertical-align: middle;
+			margin-right: 10px;
+			text-indent: -99999em;
+			background: #999;
+			@include border-radius;
+			
+			&:hover {
+				background: green;
+			}
+		}
+	}
 }
 
 .no_tasks {

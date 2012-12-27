@@ -6,14 +6,18 @@
 <% if @list.tasks.incomplete.empty? %>
 	<h3 class="no_tasks">No tasks yet...</h3>
 <% else %>
-	<table class="tasks">
-		<% @list.tasks.incomplete.each do |task| %>
-		<tr>
-			<td width="*"><%= task.description %></td>
-			<td><%= button_to 'Complete', complete_task_path(@list.id,task.id) %></td>
-		</tr>
+	<ul class="tasks">
+		<% @list.tasks.positioned.incomplete.each do |task| %>
+			<li id="task_<%=task.id%>">
+				<%= hidden_field_tag 'list_id', @list.id %>
+				<%= hidden_field_tag 'task_id', task.id %>
+				<span class="handle">[=]</span>
+				<%= link_to 'Complete', complete_task_path(@list.id,task.id), class: 'complete_button' %>
+				<p><%= task.description %></p>
+			</li>
+			
 		<% end %>
-	</table>
+	</ul>
 <% end %>
 
 <%= form_for [@list, @list.tasks.new] do |form| %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121226010333) do
+ActiveRecord::Schema.define(:version => 20121226192013) do
 
   create_table "lists", :force => true do |t|
     t.string   "name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20121226010333) do
     t.integer  "list_id"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
+    t.integer  "position"
   end
 
 end
