@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
 
 	respond_to :html, :xml, :js
+	before_filter :login_required
 
 	def index
 		respond_with @lists = List.all
@@ -49,6 +50,13 @@ class ListsController < ApplicationController
 		else
 			flash[:error] = 'Could not delete the list'
 			redirect_to lists_path
+		end
+	end
+	
+	private
+	def login_required
+		unless current_user
+			redirect_to login_path
 		end
 	end
 
