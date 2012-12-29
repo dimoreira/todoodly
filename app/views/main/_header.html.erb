@@ -1,4 +1,5 @@
 <header>
-	<h2>Welcome back, <%= User.find(session[:user_id]).name %>.</h2>
+	<h2>Hey! Welcome <%= User.find(session[:user_id]).name %>.</h2>
 	<%= link_to 'Logout', logout_path %>
+	<div class="clear"></div>
 </header>

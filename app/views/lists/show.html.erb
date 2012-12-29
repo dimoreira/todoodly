@@ -21,7 +21,7 @@
 	</ul>
 <% end %>
 
-<%= form_for [@list, @list.tasks.new] do |form| %>
+<%= form_for [@list, @task] do |form| %>
 	<p><%= form.text_field :description %> <%= form.submit %></p>
 <% end %>
 

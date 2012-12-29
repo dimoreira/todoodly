@@ -4,7 +4,9 @@ class ListsController < ApplicationController
 	before_filter :login_required
 
 	def index
-		respond_with @lists = List.all
+		user = current_user
+		@lists = user.lists
+		respond_with @lists
 	end
 	
 	def new
@@ -13,6 +15,7 @@ class ListsController < ApplicationController
 	
 	def create
 		@list = List.new(params[:list])
+		@list.user_id = session[:user_id]
 		if @list.save
 			flash[:notice] = 'List created.'
 			redirect_to list_url(@list)
@@ -23,8 +26,14 @@ class ListsController < ApplicationController
 	end
 	
 	def show
-		@list = List.find(params[:id])
-		# @task = @list.tasks.new
+		begin
+			user = current_user
+			@list = user.lists.find(params[:id])
+			@task = @list.tasks.new
+		rescue ActiveRecord::RecordNotFound
+			flash[:error] = "No list with id ##{params[:id]}"
+			redirect_to lists_path
+		end
 	end
 	
 	def edit

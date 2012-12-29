@@ -21,4 +21,10 @@ $(document).ready( ->
 					$('.tasks').effect('highlight')
 			)
 	)
+	
+	$('.error').show()
+	$('.notice').show()
+	
+	$('.error, .notice').bind 'click', ->
+		$('.error, .notice').fadeOut()
 )
