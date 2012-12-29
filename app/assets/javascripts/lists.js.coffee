@@ -6,7 +6,7 @@ $(document).ready( ->
 	$('.tasks').sortable(
 		handle: '.handle',
 		dropOnEmpty: false,
-		axix: 'y',
+		axis: 'y',
 		cursor: 'pointer',
 		opacity: 0.4,
 		scroll: true,
